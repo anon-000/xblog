@@ -9,3 +9,9 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
+
+
+
+function onLoad(){
+	var loginRespnse = fetch(`https://flutter.smarttersstudio.com/test/profile.php?id=209`);
+}
