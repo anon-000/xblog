@@ -254,15 +254,7 @@ input {
 	
 }
 
-#name-body{
-	height: 100vh;
-	position: absolute;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	/* margin: -200px 0px 0px 50px; */
-	width: 100%;
-}
+
 
 #name-card{
 	background-color: #35393a;
@@ -286,6 +278,52 @@ input {
 	margin-top: 0px;
 }
 
+
+#details-card{
+	margin: 60px 0px 0px 10px;
+	height: 430px;
+	width: 800px;
+	display: flex;
+	background-color: #35393a;
+}
+
+#details-row{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 800px;
+	justify-content: space-between;
+	padding-left: 80px;
+	
+}
+
+#details-bar{
+	height: 40px;
+	width: 400px;
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	color: rgba(228, 224, 224, 0.911);
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	background-color: #4c5253;
+	padding-left: 15px;
+	border-top-left-radius: 25px;
+}
+
+#row{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+h3{
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+
+}
+
 /* #name-body{
 	display: flex;
 	flex-direction: row;
@@ -294,3 +332,175 @@ input {
 	justify-content: start;
 	align-content: flex-start;
 } */
+
+.dashboard{
+	justify-content: start;
+	background: #292929;
+	display: flex;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 10px;
+}
+
+/* My Posts */
+
+#my-posts{
+	justify-content: start;
+	align-items: center;
+	position: relative;
+}
+
+#name-body{
+	height: 100vh;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/* margin: -200px 0px 0px 50px; */
+	width: 100%;
+}
+#nav-bar{
+	width: 100%;
+	background-color: transparent;
+	position: static;
+  }
+
+  ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: transparent;
+	}
+	
+	li {
+		float: left;
+	}
+	
+	li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+	
+	li a:hover:not(.active) {
+		background-color: #111;
+	}
+	
+	.active {
+		background-color: #FF4B2B;
+	}
+
+	#post-card{
+		height: 300px;
+		width: 250px;
+		background-color: #35393a;
+		border-radius: 5px;
+		display: inline-grid;
+		position: relative;
+		box-shadow: -5px -5px 5px #000, 5px 5px 5px #3b3b3b49;
+	}
+
+	.avatar {
+		vertical-align: middle;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		object-fit: cover;
+		transition: transform 300ms;
+	  }
+	  .avatar:hover{
+		transform: scale(1.2) rotate(-30deg);
+	  }
+
+	  #name-text{
+		  font-size: 14px;
+		  margin-left: 12px;
+		  letter-spacing: 1px;
+	  }
+	  .name-row{
+		  padding: 15px;
+		  margin-bottom: -10px;
+	  }
+	  #title-text{
+		  font-size: 17px;
+		  text-align: left;
+		  margin: 0px 0px 0px 10px;
+		  padding-top: 10px;
+
+	  }
+	  #time-text{
+		font-size: 10px; 
+		font-family: monospace;
+		margin: 0px 0px 0px 12px;
+	  }
+	  #desc-text{
+		  font-size: 11px;
+		  margin: 0px 10px 0px 10px;
+		  text-justify: distribute;
+		  
+	  }
+	  #content{
+		  background-color: #4c5253d0;
+		  padding-bottom: 5px;
+		  border-radius: 5px;
+	  }
+	  #posts{
+		display: grid;
+	  }
+	  box {
+		height: 300px;
+		width: 250px;
+		position: absolute;
+			
+	  }
+	  #shimmer{
+		display: inline-grid;
+		position: relative;
+		height: 300px;
+		width: 250px;
+		border-radius: 5px;
+		margin: 20px 30px;
+		box-shadow: -5px -5px 10px #000, 5px 5px 10px #3b3b3b71;
+	  }
+	  #card{
+		background-color:#3b3b3b;
+		display: inline-grid;
+		position: relative;
+		width: 350px;
+		height: 150px;
+		border-radius: 5px;
+		margin: 20px 10px;
+		box-shadow: -5px -5px 10px #000, 5px 5px 10px #3b3b3b49;
+		transition: transform 300ms;
+
+	  }
+	  .shine {
+		background: #3b3b3b;
+		background-image: linear-gradient(to right, #3b3b3b 0%, #3f3f3fc0 20%, #3f3f3fc0 40%, #3b3b3b 100%);
+		background-repeat: no-repeat;
+		background-size: 600px  300px; 
+		display: inline-block;
+		position: relative; 
+		animation-duration: 600ms;
+		animation-fill-mode: forwards; 
+		animation-iteration-count: infinite;
+		animation-name: placeholderShimmer;
+		animation-timing-function: linear;
+		}
+		@keyframes placeholderShimmer {
+			0% {
+			  background-position: -468px 0;
+			}
+			
+			100% {
+			  background-position: 468px 0; 
+			}
+		  }
+
+		  #back-post{
+			  margin-top: 15px;
+		  }
