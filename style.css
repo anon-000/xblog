@@ -51,6 +51,22 @@ a {
 	margin: 15px 0;
 }
 
+.loader {
+	border: 8px solid transparent;
+	border-top: 8px solid #FF4B2B; 
+	border-bottom: 8px solid #FF4B2B;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	margin: 15px;
+	animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+  }
+
 button {
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
@@ -62,6 +78,7 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+	cursor: pointer;
 }
 
 button:active {
@@ -92,6 +109,7 @@ input {
 	background-color: #4c5253;
 	border: none;
 	padding: 12px 15px;
+	color: white;
 	margin: 8px 0;
 	width: 100%;
 }
@@ -364,6 +382,9 @@ h3{
 	width: 100%;
 	background-color: transparent;
 	position: static;
+	justify-content: space-between;
+	display: flex;
+
   }
 
   ul {
@@ -504,3 +525,44 @@ h3{
 		  #back-post{
 			  margin-top: 15px;
 		  }
+
+		  #add-card{
+			height: 430px;
+			width: 800px;
+			display: flex;
+			background-color: #35393a;
+			border-radius: 5px;
+			justify-content: space-between;
+			box-shadow: -3px -3px 10px #3b3b3b49, 3px 3px 8px rgba(0, 0, 0, 0.671);
+		  }
+
+		  #add-title{
+			  height: 40px;
+			  width: 500px;
+		  }
+
+		  #add-right-column{
+			  padding: 0px 40px 0px 20px;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  flex-direction: column;
+			  text-align: center;
+		  }
+		  #add-desc{
+			  background-color: #4c5253;
+			  color: white;
+			  width: 500px;
+			  height: 200px;
+			  padding: 15px;
+		  }
+
+		  #post-submit{
+			  margin-top: 20px;
+		  }
+		  #back{
+			  background-color: transparent;
+			  border-color: white;
+			  cursor: pointer;
+		  }
+		

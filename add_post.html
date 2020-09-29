@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Bloggerz</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body >
+
+    <div id="add-card"> 
+        <div id="add-right-column" style="margin-left: 35px;">
+            <img style="padding-left: 15px;" src="https://www.flaticon.com/svg/static/icons/svg/3367/3367989.svg" height="160">
+            <h2>Add Post</h2>
+           <button id="back" onclick="goBack()">Back</button>
+        </div>
+            <div id="add-right-column">
+                <input type="text" id="add-title" placeholder="Title">
+                <textarea id="add-desc" name="Text1"  placeholder="Description"></textarea>
+                <div id="button-div"> <button id="post-submit" onclick="uploadPost()">Submit</button></div>
+            </div>
+    </div>
+
+
+  <script  src="./script.js"></script>
+
+</body>
+</html>

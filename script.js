@@ -1,7 +1,15 @@
+var titleBox = document.getElementById('add-title');
+var descBox = document.getElementById('add-desc');
+var buttonDiv = document.getElementById('button-div');
 var col = 1;
 var ro = 1;
 var column = 1;
 var row = 1;
+
+function goBack() {
+	window.history.back();
+  }
+
 function timeAgo( previous) {
 	var current = Date.now();
 	var msPerMinute = 60 * 1000;
@@ -124,6 +132,28 @@ function onProfileLoad(){
 	).finally(()=>{
 
 	});
+}
+
+
+function uploadPost(){
+	var title = titleBox.value;
+	var description = descBox.value;
+	if(title === ''){
+
+	}else if(description === ''){
+
+	}else{
+		buttonDiv.innerHTML = `<div class="loader"></div>`;
+		fetch(`https://flutter.smarttersstudio.com/test/addPost.php?id=209&title=${title}&body=${description}`)
+                    .then(
+                        e => {
+                            console.log('Post added Successfully');
+                        }
+                    ).finally(
+                        ()=> buttonDiv.innerHTML = `<button id="post-submit" onclick="uploadPost()">Submit</button>`
+                    );
+	}
+	
 }
 
 const signUpButton = document.getElementById('signUp');
