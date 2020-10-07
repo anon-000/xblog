@@ -1,6 +1,29 @@
 var titleBox = document.getElementById('add-title');
 var descBox = document.getElementById('add-desc');
 var buttonDiv = document.getElementById('button-div');
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+var loginMailField = document.getElementById('login-mail');
+var loginPasswordField = document.getElementById('login-password');
+var loginButtonDiv = document.getElementById('login-button');
+var signUpButtonDiv = document.getElementById('signup-button');
+var signUpNameField = document.getElementById('signup-name');
+var signUpEmailField = document.getElementById('signup-mail');
+var signupPasswordField = document.getElementById('signup-password');
+var signupPhoneField = document.getElementById('signup-phone');
+var genderRadioButtons = document.getElementsByName("gender");
+
+
+
+function onLoad(){
+	var data = localStorage.getItem('userResponse');
+	var userResponse = JSON.parse(data);
+	if(userResponse.accessToken != ''){
+	//    window.location.assign('my_posts.html'); 
+	}
+}
+
 var col = 1;
 var ro = 1;
 var column = 1;
@@ -156,9 +179,73 @@ function uploadPost(){
 	
 }
 
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+
+function login(){
+	var mail = loginMailField.value;
+	var password = loginPasswordField.value;
+	if(mail === ''){
+
+	}else if(password === ''){
+
+	}else{
+		loginButtonDiv.innerHTML = `<div class="loader"></div>`;
+		var loginResponse = axios.post('http://localhost:3030/authentication', {
+			"strategy":"local",
+			"email": mail,
+			"password": password
+		});
+		loginResponse.then(response=>{
+			console.log(response);
+			var {data : {accessToken, user}} = response ;
+			console.log("accesstoken :", accessToken);
+			localStorage.setItem('userResponse', JSON.stringify(response.data));
+			window.location.assign('my_posts.html');
+			// response.text().then(
+			// 	text => {
+			// 		console.log("success");
+			// 		var jsonFormattedData = JSON.parse(text);
+			// 		console.log(jsonFormattedData);
+			// 		var {result , reason , id} = jsonFormattedData ; 
+			// 		console.log("success");
+			// 		if(result){
+			// 			localStorage.setItem('userId',id);
+			// 			window.location.assign('my_posts.html');
+			// 		}else{
+			// 			console.log('errrrr');
+			// 		}
+			// 	}
+			// )
+		}).catch(error=>{
+			console.log('login error',error);
+		}).finally(()=>{
+			loginButtonDiv.innerHTML = `<button onclick="login()">Sign In</button>`;
+		});
+	}
+}
+
+function signUp(){
+	var name = signUpNameField.value;
+	var mail = signUpEmailField.value;
+	var password = signupPasswordField.value;
+	var phone = signupPasswordField.value;
+	var gender ;
+    genderRadioButtons.forEach((radioButton) =>{
+        if(radioButton.checked)
+            gender = radioButton.value;
+    });
+
+	signUpButtonDiv.innerHTML = `<div class="loader"></div>`;
+		var signUpResponse = axios.post('http://localhost:3030/authentication', {
+			"name": "Gudu",
+			"email": "gudu1@gmail.com",
+			"password": "12345678",
+			"phone": "9865478455",
+			"gender": 1
+		});
+
+}
+
+
 
 signUpButton.addEventListener('click', () => {
 	container.classList.add("right-panel-active");

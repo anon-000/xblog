@@ -105,6 +105,17 @@ form {
 	text-align: center;
 }
 
+#form-div{
+	background-color: #35393a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
 input {
 	background-color: #4c5253;
 	border: none;
@@ -271,7 +282,6 @@ input {
   	background-size: cover;
 	
 }
-
 
 
 #name-card{
@@ -565,4 +575,73 @@ h3{
 			  border-color: white;
 			  cursor: pointer;
 		  }
+
+		  #radio-container{
+			  display: flex;
+			  flex-direction: row;
+			  color: white;
+			  padding: 4px 0px 2px 0px;
+		  }
 		
+		  .radio-avatar {
+			display: block;
+			position: relative;
+			padding: 0px 10px 0px 20px;
+			margin-bottom: 12px;
+			cursor: pointer;
+			font-size: 12px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		  }
+		  
+		  /* Hide the browser's default radio button */
+		  .radio-avatar input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+		  }
+		  
+		  /* Create a custom radio button */
+		  .checkmark {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 16px;
+			width: 16px;
+			background-color: #4c5253;
+			border-radius: 50%;
+		  }
+		  
+		  /* On mouse-over, add a grey background color */
+		  .radio-avatar:hover input ~ .checkmark {
+			background-color: #ccc;
+		  }
+		  
+		  /* When the radio button is checked, add a blue background */
+		  .radio-avatar input:checked ~ .checkmark {
+			background-color: #FF4B2B;
+		  }
+		  
+		  /* Create the indicator (the dot/circle - hidden when not checked) */
+		  .checkmark:after {
+			content: "";
+			position: absolute;
+			display: none;
+		  }
+		  
+		  /* Show the indicator (dot/circle) when checked */
+		  .radio-avatar input:checked ~ .checkmark:after {
+			display: block;
+		  }
+		  
+		  /* Style the indicator (dot/circle) */
+		  .radio-avatar .checkmark:after {
+			   top: 4px;
+			  left: 4px;
+			  width: 8px;
+			  height: 8px;
+			  border-radius: 50%;
+			  background: white;
+		  }
