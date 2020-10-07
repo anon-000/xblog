@@ -18,9 +18,11 @@ var genderRadioButtons = document.getElementsByName("gender");
 
 function onLoad(){
 	var data = localStorage.getItem('userResponse');
-	var userResponse = JSON.parse(data);
-	if(userResponse.accessToken != ''){
-	//    window.location.assign('my_posts.html'); 
+	if(data){
+		var userResponse = JSON.parse(data.toString());
+		if(userResponse.accessToken != ''){
+		//    window.location.assign('my_posts.html'); 
+		}
 	}
 }
 
@@ -223,26 +225,52 @@ function login(){
 	}
 }
 
-function signUp(){
+function onSignUp(){
 	var name = signUpNameField.value;
 	var mail = signUpEmailField.value;
 	var password = signupPasswordField.value;
-	var phone = signupPasswordField.value;
+	var phone = signupPhoneField.value;
 	var gender ;
     genderRadioButtons.forEach((radioButton) =>{
         if(radioButton.checked)
             gender = radioButton.value;
-    });
-
-	signUpButtonDiv.innerHTML = `<div class="loader"></div>`;
-		var signUpResponse = axios.post('http://localhost:3030/authentication', {
-			"name": "Gudu",
-			"email": "gudu1@gmail.com",
-			"password": "12345678",
-			"phone": "9865478455",
-			"gender": 1
+	});
+	console.log("sign up func");
+	console.log(name,mail,password,phone, gender);
+	if (name === '') {
+		
+	}else if (mail === '') {
+		
+	}else if (password === '') {
+		
+	}else if (phone === '') {
+		
+	}else if (!gender) {
+		
+	}else{
+		signUpButtonDiv.innerHTML = `<div class="loader"></div>`;
+		
+		var signUpResponse = axios.post('http://localhost:3030/user', {
+			"name": name,
+			"email": mail,
+			"password": password,
+			"phone": phone,
+			"gender": gender
+		});
+		signUpResponse.then(response=>{
+			console.log("sign up sucessfull.");
+			console.log(response);
+			var {data : {accessToken}} = response ;
+			console.log("accesstoken :", accessToken);
+			localStorage.setItem('userResponse', JSON.stringify(data));
+			window.location.assign('my_posts.html');
+		}).catch(error=>{
+			console.log('sign up error',error, error.message);
+		}).finally(()=>{
+			signUpButtonDiv.innerHTML = `<button onclick="signUp()">Sign Up</button>`;
 		});
 
+	}
 }
 
 
@@ -258,7 +286,7 @@ signInButton.addEventListener('click', () => {
 
 
 
-function onLoad(){
+function ongLoad(){
 	var loginRespnse = fetch(`https://flutter.smarttersstudio.com/test/profile.php?id=209`);
 }
 

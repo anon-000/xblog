@@ -580,7 +580,7 @@ h3{
 			  display: flex;
 			  flex-direction: row;
 			  color: white;
-			  padding: 4px 0px 2px 0px;
+			  padding: 8px 0px 2px 0px;
 		  }
 		
 		  .radio-avatar {
@@ -644,4 +644,7 @@ h3{
 			  height: 8px;
 			  border-radius: 50%;
 			  background: white;
+		  }
+		  #sup-head{
+			  padding-bottom: 20px;
 		  }

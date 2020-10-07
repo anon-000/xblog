@@ -11,13 +11,13 @@
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<div id="form-div">
-			<h1>Create Account</h1>
-			<div class="social-container">
+			<h1 id="sup-head">Create Account</h1>
+			<!-- <div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
-			<span>or use your email for registration</span>
+			<span>or use your email for registration</span> -->
 			<input id="signup-name" type="text" placeholder="Name" />
 			<input id="signup-mail" type="email" placeholder="Email" />
 			<input id="signup-password" type="password" placeholder="Password" />
@@ -36,7 +36,7 @@
 					<span class="checkmark"></span>
 				  </label>
 			</div>
-			<button id="signup-button" onclick="signUp()">Sign Up</button>
+			<div id="signup-button"><button onclick="onSignUp()">Sign Up</button></div>
 		</div>
 	</div>
 	<div class="form-container sign-in-container">
