@@ -17,13 +17,16 @@ var genderRadioButtons = document.getElementsByName("gender");
 
 
 function onLoad(){
-	var data = localStorage.getItem('userResponse');
-	if(data){
-		var userResponse = JSON.parse(data.toString());
-		if(userResponse.accessToken != ''){
-		//    window.location.assign('my_posts.html'); 
+	var accessToken = localStorage.getItem('accessToken');
+	var user = localStorage.getItem('user');
+	console.log(accessToken);
+	console.log(user);
+		// var userResponse = JSON.stringify(data.toString());
+		// console.log(userResponse.accessToken);
+		if(accessToken != null){
+			console.log("go to my posts");
+		   window.location.assign('my_posts.html'); 
 		}
-	}
 }
 
 var col = 1;
@@ -182,7 +185,7 @@ function uploadPost(){
 }
 
 
-function login(){
+function onLogin(){
 	var mail = loginMailField.value;
 	var password = loginPasswordField.value;
 	if(mail === ''){
@@ -200,23 +203,11 @@ function login(){
 			console.log(response);
 			var {data : {accessToken, user}} = response ;
 			console.log("accesstoken :", accessToken);
-			localStorage.setItem('userResponse', JSON.stringify(response.data));
+			console.log("--------------------------------");
+			console.log(user);
+			localStorage.setItem('accessToken', accessToken);
+			localStorage.setItem('user', JSON.stringify(user));
 			window.location.assign('my_posts.html');
-			// response.text().then(
-			// 	text => {
-			// 		console.log("success");
-			// 		var jsonFormattedData = JSON.parse(text);
-			// 		console.log(jsonFormattedData);
-			// 		var {result , reason , id} = jsonFormattedData ; 
-			// 		console.log("success");
-			// 		if(result){
-			// 			localStorage.setItem('userId',id);
-			// 			window.location.assign('my_posts.html');
-			// 		}else{
-			// 			console.log('errrrr');
-			// 		}
-			// 	}
-			// )
 		}).catch(error=>{
 			console.log('login error',error);
 		}).finally(()=>{
@@ -258,11 +249,13 @@ function onSignUp(){
 			"gender": gender
 		});
 		signUpResponse.then(response=>{
-			console.log("sign up sucessfull.");
 			console.log(response);
-			var {data : {accessToken}} = response ;
+			var {data : {accessToken, user}} = response ;
 			console.log("accesstoken :", accessToken);
-			localStorage.setItem('userResponse', JSON.stringify(data));
+			console.log("--------------------------------");
+			console.log(user);
+			localStorage.setItem('accessToken', accessToken);
+			localStorage.setItem('user', JSON.stringify(user));
 			window.location.assign('my_posts.html');
 		}).catch(error=>{
 			console.log('sign up error',error, error.message);
@@ -273,7 +266,12 @@ function onSignUp(){
 	}
 }
 
-
+function onLogOut(){
+	console.log("log out");
+	localStorage.setItem('accessToken', null);
+	localStorage.setItem('user', null);
+	window.location.assign('auth_page.html');
+}
 
 signUpButton.addEventListener('click', () => {
 	container.classList.add("right-panel-active");
@@ -286,7 +284,10 @@ signInButton.addEventListener('click', () => {
 
 
 
-function ongLoad(){
-	var loginRespnse = fetch(`https://flutter.smarttersstudio.com/test/profile.php?id=209`);
-}
+
+
+
+// function ongLoad(){
+// 	var loginRespnse = fetch(`https://flutter.smarttersstudio.com/test/profile.php?id=209`);
+// }
 

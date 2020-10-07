@@ -648,3 +648,10 @@ h3{
 		  #sup-head{
 			  padding-bottom: 20px;
 		  }
+		  #log-out{
+			color: #fff;
+			font-size: 14px;
+			text-decoration: none;
+			margin: 35px 40px 0px 0px;
+			cursor: pointer;
+		}
