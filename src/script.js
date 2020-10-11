@@ -1,6 +1,7 @@
 var titleBox = document.getElementById('add-title');
 var descBox = document.getElementById('add-desc');
 var buttonDiv = document.getElementById('button-div');
+var snackBar = document.getElementById("snackbar");
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
@@ -27,7 +28,6 @@ function onLoad(){
 	}
 		// var userResponse = JSON.stringify(data.toString());
 		// console.log(userResponse.accessToken);
-		
 }
 
 var col = 1;
@@ -38,6 +38,14 @@ var row = 1;
 function goBack() {
 	window.history.back();
   }
+
+
+  function showSnackBar(msg){
+	snackBar.innerHTML = msg;
+	snackBar.className = "show";
+  	setTimeout(function(){ snackBar.className = snackBar.className.replace("show", ""); }, 3000);
+  }
+
 
 function timeAgo( previous) {
 	var current = Date.now();
@@ -211,8 +219,9 @@ function onLogin(){
 			window.location.assign('my_posts.html');
 		}).catch(error=>{
 			console.log('login error',error);
+			showSnackBar(error.response.data.message);
 		}).finally(()=>{
-			loginButtonDiv.innerHTML = `<button onclick="login()">Sign In</button>`;
+			loginButtonDiv.innerHTML = `<button onclick="onLogin()">Sign In</button>`;
 		});
 	}
 }
