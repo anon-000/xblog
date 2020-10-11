@@ -150,20 +150,22 @@ function onProfileLoad(){
 	var genderBody = document.getElementById('gender');
 	var emailBody = document.getElementById('mail');
 	var numberBody = document.getElementById('phone');
+	var userString = localStorage.getItem('user');
+	var accessToken = localStorage.getItem('accessToken');
+	var user = JSON.parse(userString);
 
-	var loginRespnse = fetch(`https://flutter.smarttersstudio.com/test/profile.php?id=209`);
+	var loginRespnse =  axios.get(`http://localhost:3030/user/${user._id}`, {
+		headers: {
+		  'Authorization': accessToken
+		}
+	  });
 
 	loginRespnse.then(response=>{
-		response.text().then(
-			text => {
-				var jsonFormattedData = JSON.parse(text);
-				var {name , email , phone, gender} = jsonFormattedData ;
-				nameBody.innerHTML = name;
-				genderBody.innerHTML = gender==1 ? 'Male' : gender==2 ?'Female' :'Others'; 
-				emailBody.innerHTML = email;
-				numberBody.innerHTML = phone;
-			}
-		)
+		var {name, gender, email, phone} = response.data;
+		nameBody.innerHTML = name;
+		genderBody.innerHTML = gender==1 ? 'Male' : gender==2 ?'Female' :'Others'; 
+		emailBody.innerHTML = email;
+		numberBody.innerHTML = phone;
 	}).catch(
 		error=>{
 
