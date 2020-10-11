@@ -21,12 +21,13 @@ function onLoad(){
 	var user = localStorage.getItem('user');
 	console.log(accessToken);
 	console.log(user);
+	if(accessToken != null && accessToken != ''){
+		console.log("go to my posts");
+		window.location.assign('my_posts.html'); 
+	}
 		// var userResponse = JSON.stringify(data.toString());
 		// console.log(userResponse.accessToken);
-		if(accessToken != null){
-			console.log("go to my posts");
-		   window.location.assign('my_posts.html'); 
-		}
+		
 }
 
 var col = 1;
@@ -202,7 +203,7 @@ function onLogin(){
 		loginResponse.then(response=>{
 			console.log(response);
 			var {data : {accessToken, user}} = response ;
-			console.log("accesstoken :", accessToken);
+			console.log("accessToken :", accessToken);
 			console.log("--------------------------------");
 			console.log(user);
 			localStorage.setItem('accessToken', accessToken);
@@ -268,8 +269,8 @@ function onSignUp(){
 
 function onLogOut(){
 	console.log("log out");
-	localStorage.setItem('accessToken', null);
-	localStorage.setItem('user', null);
+	localStorage.removeItem('accessToken');
+	localStorage.removeItem('user');
 	window.location.assign('auth_page.html');
 }
 
