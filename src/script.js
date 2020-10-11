@@ -173,21 +173,31 @@ function onProfileLoad(){
 	});
 }
 
-
+///Post a Blog
 function uploadPost(){
 	var title = titleBox.value;
 	var description = descBox.value;
+	var accessToken = localStorage.getItem('accessToken');
 	if(title === ''){
 
 	}else if(description === ''){
 
 	}else{
 		buttonDiv.innerHTML = `<div class="loader"></div>`;
-		fetch(`https://flutter.smarttersstudio.com/test/addPost.php?id=209&title=${title}&body=${description}`)
-                    .then(
+		axios.post('http://localhost:3030/post', {
+			"title": title,
+			"description": description
+		},{
+			headers: {
+			  'Authorization': accessToken
+			}
+		  }).then(
                         e => {
+							titleBox.value = '';
+							descBox.value = '';
 							console.log('Post added Successfully');
 							showSnackBar('Post added Successfully');
+
                         }
                     ).finally(
                         ()=> buttonDiv.innerHTML = `<button id="post-submit" onclick="uploadPost()">Submit</button>`
@@ -196,7 +206,7 @@ function uploadPost(){
 	
 }
 
-
+///Handle Login 
 function onLogin(){
 	var mail = loginMailField.value;
 	var password = loginPasswordField.value;
@@ -233,6 +243,7 @@ function onLogin(){
 	}
 }
 
+///Handles signup process
 function onSignUp(){
 	var name = signUpNameField.value;
 	var mail = signUpEmailField.value;
