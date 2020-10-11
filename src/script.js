@@ -14,6 +14,8 @@ var signUpEmailField = document.getElementById('signup-mail');
 var signupPasswordField = document.getElementById('signup-password');
 var signupPhoneField = document.getElementById('signup-phone');
 var genderRadioButtons = document.getElementsByName("gender");
+var loginErrorDiv = document.getElementById('error');
+var signupErrorDiv = document.getElementById('signup-error');
 
 
 
@@ -184,7 +186,8 @@ function uploadPost(){
 		fetch(`https://flutter.smarttersstudio.com/test/addPost.php?id=209&title=${title}&body=${description}`)
                     .then(
                         e => {
-                            console.log('Post added Successfully');
+							console.log('Post added Successfully');
+							showSnackBar('Post added Successfully');
                         }
                     ).finally(
                         ()=> buttonDiv.innerHTML = `<button id="post-submit" onclick="uploadPost()">Submit</button>`
@@ -198,10 +201,14 @@ function onLogin(){
 	var mail = loginMailField.value;
 	var password = loginPasswordField.value;
 	if(mail === ''){
-
+		loginErrorDiv.innerHTML = 'Email Id is required';
+		loginErrorDiv.style.visibility = 'visible';
 	}else if(password === ''){
-
+		loginErrorDiv.innerHTML = 'Password is required';
+		loginErrorDiv.style.visibility = 'visible';
 	}else{
+		loginErrorDiv.style.visibility = 'hidden';
+		loginErrorDiv.innerHTML = '';
 		loginButtonDiv.innerHTML = `<div class="loader"></div>`;
 		var loginResponse = axios.post('http://localhost:3030/authentication', {
 			"strategy":"local",
@@ -239,16 +246,23 @@ function onSignUp(){
 	console.log("sign up func");
 	console.log(name,mail,password,phone, gender);
 	if (name === '') {
-		
+		signupErrorDiv.innerHTML = 'Name is required';
+		signupErrorDiv.style.visibility = 'visible';
 	}else if (mail === '') {
-		
+		signupErrorDiv.innerHTML = 'Email Id is required';
+		signupErrorDiv.style.visibility = 'visible';
 	}else if (password === '') {
-		
+		signupErrorDiv.innerHTML = 'Password is required';
+		signupErrorDiv.style.visibility = 'visible';
 	}else if (phone === '') {
-		
+		signupErrorDiv.innerHTML = 'Phone is required';
+		signupErrorDiv.style.visibility = 'visible';
 	}else if (!gender) {
-		
+		signupErrorDiv.innerHTML = 'Gender is required';
+		signupErrorDiv.style.visibility = 'visible';
 	}else{
+		signupErrorDiv.style.visibility = 'hidden';
+		signupErrorDiv.innerHTML = '';
 		signUpButtonDiv.innerHTML = `<div class="loader"></div>`;
 		
 		var signUpResponse = axios.post('http://localhost:3030/user', {
@@ -269,8 +283,9 @@ function onSignUp(){
 			window.location.assign('my_posts.html');
 		}).catch(error=>{
 			console.log('sign up error',error, error.message);
+			showSnackBar(error.response.data.message);
 		}).finally(()=>{
-			signUpButtonDiv.innerHTML = `<button onclick="signUp()">Sign Up</button>`;
+			signUpButtonDiv.innerHTML = `<button onclick="onSignUp()">Sign Up</button>`;
 		});
 
 	}

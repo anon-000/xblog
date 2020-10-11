@@ -660,7 +660,7 @@ h3{
 			visibility: hidden;
 			min-width: 250px;
 			margin-left: -125px;
-			background-color: #fff;
+			background-color: rgba(255, 255, 255, 0.767);
 			color: #333;
 			text-align: center;
 			border-radius: 2px;
@@ -696,4 +696,29 @@ h3{
 		  @keyframes fadeout {
 			from {bottom: 30px; opacity: 1;}
 			to {bottom: 0; opacity: 0;}
+		  }
+
+		  #error{
+			  padding-left: 5px;
+			  margin: -5px 0px -10px 0px;
+			  font-size: 10px;
+			  text-align: start;
+			  color: rgb(255, 103, 103);
+			  font-weight: 500;
+			  visibility: hidden;
+		  }
+		  .error-row{
+			  display: flex;
+			  width: 100%;
+			  flex-direction: row;
+			  justify-content: start;
+		  }
+		  #signup-error{
+			padding-left: 5px;
+			margin: -5px 0px -4px 0px;
+			font-size: 10px;
+			text-align: start;
+			color: rgb(255, 103, 103);
+			font-weight: 500;
+			visibility: hidden;
 		  }
